@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: springCloudConfig
+  cloud:
+    config:
+      lable: master
+      server:
+        git:
+          uri: https://github.com/chenyuan1991/gitDir/
+          search-paths: respo
+          username: chenyuan1991
+          password: easipass1991
+server:
+   port: 10033
+eureka:
+   instance:
+       hostname: 192.168.129.150
+       prefer-ip-address: true
+       instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+   client:
+       registerWithEureka: true
+       fetchRegistry: true
+       serviceUrl:
+           defaultZone: http://${eureka.instance.hostname}:10028/eureka/
+
+
